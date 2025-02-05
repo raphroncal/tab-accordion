@@ -1,5 +1,6 @@
 "use client";
 
+import {decodeHtml} from "@/app/page";
 import React from "react";
 
 interface AccordionProps {
@@ -15,12 +16,6 @@ const Accordion: React.FC<AccordionProps> = ({
   isOpen,
   toggle,
 }) => {
-  const decodeHtml = (input: string): string => {
-    const e = document.createElement("div");
-    e.innerHTML = input;
-    return e.innerHTML || e.textContent || "";
-  };
-
   return (
     <div className="mb-1 px-4 bg-slate-100" onClick={toggle}>
       <div className="flex flex-row justify-between items-center py-2">
