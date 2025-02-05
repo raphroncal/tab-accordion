@@ -25,6 +25,12 @@ export default function Home() {
     fetchData();
   }, []);
 
+  const decodeHtml = (input: string): string => {
+    const e = document.createElement("div");
+    e.innerHTML = input;
+    return e.innerHTML || e.textContent || "";
+  };
+
   return (
     <div>
       <NavBar></NavBar>
@@ -34,12 +40,14 @@ export default function Home() {
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis
           voluptatem facilis ipsum ipsa.
         </h2>
-        <div>
+        <div className="content text-black">
           {data &&
             data.map((data: DataObject, index: number) => (
               <div key={index}>
                 <h3>{data.title}</h3>
-                <p>{data.content}</p>
+                <div
+                  dangerouslySetInnerHTML={{__html: decodeHtml(data.content)}}
+                />
               </div>
             ))}
         </div>
