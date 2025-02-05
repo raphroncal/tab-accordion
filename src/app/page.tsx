@@ -1,15 +1,17 @@
 "use client";
 
+import Accordion from "@/components/Accordion";
 import NavBar from "@/components/NavBar";
 import {useEffect, useState} from "react";
 
-export default function Home() {
-  interface DataObject {
-    title: string;
-    content: string;
-  }
+export interface DataObject {
+  title: string;
+  content: string;
+}
 
+export default function Home() {
   const [data, setData] = useState<DataObject[]>();
+  const [displayStates, setDisplayStates] = useState<boolean[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,10 +27,23 @@ export default function Home() {
     fetchData();
   }, []);
 
-  const decodeHtml = (input: string): string => {
-    const e = document.createElement("div");
-    e.innerHTML = input;
-    return e.innerHTML || e.textContent || "";
+  useEffect(() => {
+    if (data) {
+      // Initialize all displays to false except the first
+      let initialStates = new Array(data.length).fill(false);
+      initialStates[0] = true;
+      setDisplayStates(initialStates);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    console.log(displayStates);
+  }, [displayStates]);
+
+  const toggleDisplay = (index: number) => {
+    setDisplayStates((prevState) =>
+      prevState.map((state, i) => (i === index ? !state : false))
+    );
   };
 
   return (
@@ -44,10 +59,14 @@ export default function Home() {
           {data &&
             data.map((data: DataObject, index: number) => (
               <div key={index}>
-                <h3>{data.title}</h3>
-                <div
-                  dangerouslySetInnerHTML={{__html: decodeHtml(data.content)}}
-                />
+                <Accordion
+                  title={data.title}
+                  content={data.content}
+                  isOpen={displayStates[index]}
+                  toggle={() => {
+                    toggleDisplay(index);
+                  }}
+                ></Accordion>
               </div>
             ))}
         </div>
