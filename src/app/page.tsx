@@ -36,10 +36,6 @@ export default function Home() {
     }
   }, [data]);
 
-  useEffect(() => {
-    console.log(displayStates);
-  }, [displayStates]);
-
   const toggleDisplay = (index: number) => {
     setDisplayStates((prevState) =>
       prevState.map((state, i) => (i === index ? !state : false))
@@ -51,11 +47,16 @@ export default function Home() {
       <NavBar></NavBar>
       <div className="flex flex-col items-center px-12 py-6 space-y-5">
         <h1 className="font-mono">about us</h1>
-        <h2 className="font-bold text-center text-xl text-pretty w-1/2">
+        <h2 className="font-bold text-center text-base text-pretty lg:text-xl lg:w-1/2">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis
           voluptatem facilis ipsum ipsa.
         </h2>
         <div className="content text-black">
+          <img
+            src="images/corporate.jpg"
+            alt="image of a corporate team meeting"
+            className="mb-2 lg:mb-0 lg:w-1/2"
+          />
           {data &&
             data.map((data: DataObject, index: number) => (
               <div key={index}>
