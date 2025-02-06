@@ -19,7 +19,7 @@ const Accordion: React.FC<AccordionProps> = ({
   return (
     <div className="mb-1 px-4 bg-slate-100" onClick={toggle}>
       <div className="flex flex-row justify-between items-center py-2">
-        <h3 className="w-max text-lg font-bold">{title}</h3>
+        <p className="w-max text-lg font-bold">{title}</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"

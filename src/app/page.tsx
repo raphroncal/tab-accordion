@@ -52,13 +52,11 @@ export default function Home() {
 
   return (
     <div>
-      <NavBar />
-      <div className="flex flex-col items-center px-12 py-6 space-y-5">
-        <h1 className="font-mono">about us</h1>
-        <h2 className="font-bold text-center text-base text-pretty lg:text-xl lg:w-1/2">
+      <div className="flex flex-col items-center space-y-5">
+        <h1 className="font-bold text-center text-base text-pretty lg:text-xl lg:w-1/2">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis
           voluptatem facilis ipsum ipsa.
-        </h2>
+        </h1>
         <div className="content text-black lg:flex lg:gap-2 lg:w-full lg:overflow-hidden">
           {/* image */}
           <div className="mb-2 lg:mb-0 lg:relative lg:order-2">
@@ -101,13 +99,13 @@ export default function Home() {
                       setSection(index);
                     }}
                   >
-                    <h3
+                    <p
                       className={`text-sm text-center ${
                         section == index && "text-slate-100 font-bold"
                       }`}
                     >
                       {data.title}
-                    </h3>
+                    </p>
                   </div>
                 ))}
             </div>
@@ -123,7 +121,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

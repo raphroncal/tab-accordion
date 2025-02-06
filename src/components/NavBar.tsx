@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, {useState} from "react";
 
 const NavBar: React.FC = () => {
@@ -31,14 +32,14 @@ const NavBar: React.FC = () => {
           }`}
         >
           <li className="px-8 py-4 border-b lg:border-none">
-            <a href="/" className="hover:text-gray-400">
+            <Link href="/" className="hover:text-gray-400">
               Home
-            </a>
+            </Link>
           </li>
           <li className="px-8 py-4 border-b lg:border-none">
-            <a href="/about" className="hover:text-gray-400">
+            <Link href="/about" className="hover:text-gray-400">
               About
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
