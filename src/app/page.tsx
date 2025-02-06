@@ -1,8 +1,6 @@
 "use client";
 
 import Accordion from "@/components/Accordion";
-import Footer from "@/components/Footer";
-import NavBar from "@/components/NavBar";
 import {useEffect, useState} from "react";
 
 export interface DataObject {
@@ -38,7 +36,7 @@ export default function Home() {
   useEffect(() => {
     if (data) {
       // Initialize all displays to false except the first
-      let initialStates = new Array(data.length).fill(false);
+      const initialStates = new Array(data.length).fill(false);
       initialStates[0] = true;
       setDisplayStates(initialStates);
     }
