@@ -1,6 +1,7 @@
 "use client";
 
 import Accordion from "@/components/Accordion";
+import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import {useEffect, useState} from "react";
 
@@ -122,6 +123,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
