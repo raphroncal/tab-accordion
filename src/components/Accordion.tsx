@@ -1,6 +1,6 @@
 "use client";
 
-import {decodeHtml} from "@/app/page";
+import {decodeHtml} from "@/app/utils/decodeHtml";
 import React from "react";
 
 interface AccordionProps {

@@ -2,17 +2,12 @@
 
 import Accordion from "@/components/Accordion";
 import {useEffect, useState} from "react";
+import {decodeHtml} from "./utils/decodeHtml";
 
 export interface DataObject {
   title: string;
   content: string;
 }
-
-export const decodeHtml = (input: string): string => {
-  const e = document.createElement("div");
-  e.innerHTML = input;
-  return e.innerHTML || e.textContent || "";
-};
 
 export default function Home() {
   const [data, setData] = useState<DataObject[]>();
@@ -75,7 +70,6 @@ export default function Home() {
                       content={data.content}
                       isOpen={displayStates[index]}
                       toggle={() => {
-                        // [];
                         toggleDisplay(index);
                       }}
                     ></Accordion>
